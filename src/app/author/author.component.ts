@@ -7,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthorComponent implements OnInit {
 
-  isActive: String = 'is-active';
+  isActive: boolean = true;
   
   getActiveClasses() {
     return ['isActive']
+  }
+
+  getColor() {
+    return this.isActive ? 'green' : 'red';
   }
 
   constructor() { }
