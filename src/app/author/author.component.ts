@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, AfterViewInit, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-author',
@@ -7,8 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthorComponent implements OnInit {
 
+  @ViewChild('authorRef') authorElement!: ElementRef<HTMLDivElement>;
   isActive: boolean = true;
-  
+
   getActiveClasses() {
     return ['isActive']
   }
@@ -17,9 +18,18 @@ export class AuthorComponent implements OnInit {
     return this.isActive ? 'green' : 'red';
   }
 
-  constructor() { }
+  changeColor() {
+    this.renderer.setStyle(this.authorElement.nativeElement, 'color', 'green');
+  }
+
+  constructor(private renderer: Renderer2) { }
+
+  ngAfterViewInit(): void {
+    console.log(this.authorElement);
+  }
 
   ngOnInit(): void {
+
   }
 
 }
