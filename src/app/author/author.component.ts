@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthorComponent implements OnInit {
 
+  isActive: String = 'is-active';
+  
+  getActiveClasses() {
+    return ['isActive']
+  }
+
   constructor() { }
 
   ngOnInit(): void {
