@@ -19,4 +19,7 @@ export class CoursesComponent implements OnInit {
     });
   }
 
+  onStatusUpdate(newValue: string, index: number) {
+    this.courses[index].status = newValue;
+  }
 }

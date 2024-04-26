@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
 import { Course } from '../courses/course.model';
-
 @Component({
   selector: 'app-course',
   templateUrl: './course.component.html',
@@ -9,10 +8,17 @@ import { Course } from '../courses/course.model';
 export class CourseComponent implements OnInit {
 
   @Input() course!: Course;
+  @ViewChild('statusRef') statusRef!: ElementRef<HTMLSelectElement>;
+  @Output() statusUpdated = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onStatusUpdate() {
+    const selectedValue = this.statusRef.nativeElement.value;
+    this.statusUpdated.emit(selectedValue)
   }
 
 }
