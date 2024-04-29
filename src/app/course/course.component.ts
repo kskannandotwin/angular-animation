@@ -10,6 +10,7 @@ export class CourseComponent implements OnInit {
   @Input() course!: Course;
   @ViewChild('statusRef') statusRef!: ElementRef<HTMLSelectElement>;
   @Output() statusUpdated = new EventEmitter<string>();
+  @Output() courseDeleted = new EventEmitter<void>();
 
   constructor() { }
 
@@ -19,6 +20,10 @@ export class CourseComponent implements OnInit {
   onStatusUpdate() {
     const selectedValue = this.statusRef.nativeElement.value;
     this.statusUpdated.emit(selectedValue)
+  }
+
+  onCourseDelete() {
+    this.courseDeleted.emit();
   }
 
 }

@@ -17,9 +17,13 @@ export class CoursesComponent implements OnInit {
     this.coursesService.getCourses().subscribe(courses => {
       this.courses = courses;
     });
-  }
+  };
 
   onStatusUpdate(newValue: string, index: number) {
     this.courses[index].status = newValue;
+  };
+
+  onCourseDelete(index: number) {
+    this.courses.splice(index, 1);
   }
 }
