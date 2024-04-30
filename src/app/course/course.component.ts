@@ -26,4 +26,11 @@ export class CourseComponent implements OnInit {
     this.courseDeleted.emit();
   }
 
+  getCourseStatusClass() {
+    return {
+      'bg-success': this.course.status === 'Active',
+      'bg-secondary': this.course.status === 'InActive',
+      'bg-danger': this.course.status === 'Draft'
+    };
+  }
 }
