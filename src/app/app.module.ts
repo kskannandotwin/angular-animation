@@ -8,13 +8,15 @@ import { CoursesComponent } from './courses/courses.component';
 import { UsersComponent } from './users/users.component';
 import { CourseComponent } from './course/course.component';
 import { AnimationComponent } from './animation/animation.component';
+import { OpenCloseComponent } from './open-close/open-close.component';
 @NgModule({
   declarations: [
     AppComponent,
     CoursesComponent,
     UsersComponent,
     CourseComponent,
-    AnimationComponent
+    AnimationComponent,
+    OpenCloseComponent
   ],
   imports: [
     BrowserModule,
