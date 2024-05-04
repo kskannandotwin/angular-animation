@@ -1,4 +1,4 @@
-import { animate, group, state, style, transition, trigger } from "@angular/animations";
+import { animate, group, keyframes, state, style, transition, trigger } from "@angular/animations";
 
 export const conditionalAnimation = trigger('conditionalTrigger', [
     // transition('void => *', [
@@ -51,9 +51,20 @@ export const listAnimation = trigger('listTrigger', [
             animate(1000, style({
                 opacity: 1
             })),
-            animate(2000, style({
-                backgroundColor: 'red'
-            }))
+            animate('4000ms ease-in', keyframes([
+                style({
+                    background: 'red',
+                    offset: 0
+                }),
+                style({
+                    background: 'yellow',
+                    offset: 0.9    
+                }),
+                style({
+                    background: 'green',
+                    offset: 1
+                })
+            ]))
         ]),
         animate(1000)
     ]),
