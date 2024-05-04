@@ -6,3 +6,11 @@
 <button (click)="animate = !animate">Animate me</button>
 
 <p [@shrinkAnimation]="animate ? 'shrink' : 'noshrink'" [ngStyle]="{ 'width.px': width }">Shrink me</p>
+
+<hr>
+
+<button (click)="onAddElement()">Add element</button>
+
+<div @listTrigger class="element" *ngFor="let item of listData">
+    {{ item }}
+</div>

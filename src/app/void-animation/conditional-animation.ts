@@ -1,4 +1,4 @@
-import { animate, state, style, transition, trigger } from "@angular/animations";
+import { animate, group, state, style, transition, trigger } from "@angular/animations";
 
 export const conditionalAnimation = trigger('conditionalTrigger', [
     // transition('void => *', [
@@ -40,3 +40,26 @@ export const shrinkAnimation = trigger('shrinkAnimation', [
         }))
     ])
 ])
+
+export const listAnimation = trigger('listTrigger', [
+    transition(':enter', [
+        style({
+            opacity: 0,
+            background: 'white'
+        }),
+        group([
+            animate(1000, style({
+                opacity: 1
+            })),
+            animate(2000, style({
+                backgroundColor: 'red'
+            }))
+        ]),
+        animate(1000)
+    ]),
+    transition(':leave', [
+        animate(300, style({
+            opacity: 0
+        }))
+    ])
+]);
