@@ -1,10 +1,21 @@
 import { animate, state, style, transition, trigger } from "@angular/animations";
 
 export const conditionalAnimation = trigger('conditionalTrigger', [
-    state('shown', style({
-        // opacity: 0
-    })),
-    transition('void => shown', [
+    // transition('void => *', [
+    //     style({
+    //         opacity: 0
+    //     }),
+    //     animate('0.3s ease-out', style({
+    //         opacity: 1
+    //     }))
+    // ]),
+    // transition('* => void', [
+    //     animate(300, style({
+    //         opacity: 0
+    //     }))
+    // ])
+
+    transition(':enter', [
         style({
             opacity: 0
         }),
@@ -12,9 +23,20 @@ export const conditionalAnimation = trigger('conditionalTrigger', [
             opacity: 1
         }))
     ]),
-    transition('shown => void', [
+    transition(':leave', [
         animate(300, style({
             opacity: 0
+        }))
+    ])
+]);
+
+export const shrinkAnimation = trigger('shrinkAnimation', [
+    transition('* => *', [
+        animate(400, style({
+            width: 0
+        })),
+        animate(400, style({
+            width: '*'
         }))
     ])
 ])

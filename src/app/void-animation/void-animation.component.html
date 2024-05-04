@@ -1,3 +1,8 @@
 <button (click)="toggleContent()">Toggle content</button>
 
-<p [@conditionalTrigger]="showContent ? 'shown' : 'notshown'" *ngIf="showContent">Now you can see the content</p>
+<p @conditionalTrigger *ngIf="showContent">Now you can see the content</p>
+
+<button (click)="width = width - 50">Shrink</button>
+<button (click)="animate = !animate">Animate me</button>
+
+<p [@shrinkAnimation]="animate ? 'shrink' : 'noshrink'" [ngStyle]="{ 'width.px': width }">Shrink me</p>
