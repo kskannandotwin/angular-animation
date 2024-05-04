@@ -26,6 +26,21 @@ import { Component, OnInit } from '@angular/core';
       transition('clicked => default', animate(300)),
       transition('mousedown <=> clicked', animate(300)),
       transition('default <=> mousedown', animate(300))
+    ]),
+    trigger('numberState', [
+      state('unselected', style({
+        border: '1px solid black',
+        padding: '5px'
+      })),
+      state('selected', style({
+        border: '2px solid blue',
+        padding: '4px',
+        backgroundColor: 'lightblue'
+      })),
+      transition('unselected => selected', [style({
+        border: '2px solid black',
+        padding: '4px'
+      }), animate(300)])
     ])
   ]
 })
@@ -33,6 +48,7 @@ export class AnimationComponent implements OnInit {
 
   clickInfo = 'default';
   paragraphState = 'default';
+  selectedNumber: number = 0;
 
   constructor() { }
 
@@ -52,5 +68,9 @@ export class AnimationComponent implements OnInit {
     setTimeout(() => {
       this.paragraphState = 'mousedown';
     }, 3000);
+  }
+
+  onNumberSelected(event: Event) {
+    this.selectedNumber = +(<HTMLInputElement>event.target).value;
   }
 }
