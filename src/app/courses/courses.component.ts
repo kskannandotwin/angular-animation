@@ -14,6 +14,7 @@ export class CoursesComponent implements OnInit {
   courses: Course[] = [];
   selectedCourseIndex!: number;
   coursesLoaded = false;
+  createNewCourse = false;
 
   constructor(private coursesService: CoursesService) { }
 
@@ -34,5 +35,9 @@ export class CoursesComponent implements OnInit {
 
   onCourseSelected(index: number) {
     this.selectedCourseIndex = index;
+  }
+
+  onCourseCreate() {    
+    this.createNewCourse = true;
   }
 }
