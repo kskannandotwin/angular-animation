@@ -9,6 +9,7 @@ import { UsersComponent } from './users/users.component';
 import { CourseComponent } from './course/course.component';
 import { AnimationComponent } from './animation/animation.component';
 import { OpenCloseComponent } from './open-close/open-close.component';
+import { VoidAnimationComponent } from './void-animation/void-animation.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +17,8 @@ import { OpenCloseComponent } from './open-close/open-close.component';
     UsersComponent,
     CourseComponent,
     AnimationComponent,
-    OpenCloseComponent
+    OpenCloseComponent,
+    VoidAnimationComponent
   ],
   imports: [
     BrowserModule,
