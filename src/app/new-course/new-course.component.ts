@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Course } from '../courses/course.model';
 
 @Component({
   selector: 'app-new-course',
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewCourseComponent implements OnInit {
 
+  @Output() courseCreated = new EventEmitter<Course>();
+  @Output() courseCanceled = new EventEmitter<void>();
+
   constructor() { }
 
+  courseForm = new FormGroup({
+    name: new FormControl('', Validators.required),
+    description: new FormControl(''),
+    status: new FormControl('')
+  })
+  statuses = ['Active', 'InActive', 'Draft'];
+
   ngOnInit(): void {
+  }
+
+  onCourseCreate() {
+    console.log(this.courseForm.value);
+    this.courseCreated.emit(this.courseForm.value as Course);
+  }
+
+  onCourseCancel() {
+    this.courseCanceled.emit();
   }
 
 }
