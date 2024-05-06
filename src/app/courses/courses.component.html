@@ -8,9 +8,10 @@
         <button class="btn btn-info" (click)="onCourseCreate()">Add Course</button>
     </div>
 </div>
-<div class="row" *ngIf="createNewCourse">
-    <div class="col-md-12">
-        <app-new-course (courseCreated)="courseCreated($event)" (courseCanceled)="courseCancel()"></app-new-course>
+<div class="row">
+    <div class="col-md-12 overflow-hidden">
+        <app-new-course *ngIf="createNewCourse" @newCourseTrigger (courseCreated)="courseCreated($event)"
+            (courseCanceled)="courseCancel()"></app-new-course>
     </div>
 </div>
 <div class="row">
@@ -20,7 +21,8 @@
 
             </div>
         </div>
-        <app-course *ngFor="let course of displayedCourses; let i = index" [course]="course" @courseAddTrigger (@courseAddTrigger.done)="onCourseAddDone($event, i)"
+        <app-course *ngFor="let course of displayedCourses; let i = index" [course]="course" @courseAddTrigger
+            (@courseAddTrigger.done)="onCourseAddDone($event, i)"
             [@selectedTrigger]="selectedCourseIndex === i ? 'selected' : 'default'"
             [ngClass]="{inactive: course.status === 'InActive'}" (statusUpdated)="onStatusUpdate($event, i)"
             (courseDeleted)="onCourseDelete(i)" (click)="onCourseSelected(i)">
