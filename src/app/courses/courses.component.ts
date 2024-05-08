@@ -45,7 +45,7 @@ export class CoursesComponent implements OnInit {
   }
 
   courseCreated(event: Course) {
-    this.courses.unshift(event);
+    this.courses.push(event);
     this.createNewCourse = false;
   }
 

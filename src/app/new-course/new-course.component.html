@@ -19,7 +19,7 @@
         </div>
 
         <div class="my-2">
-            <button class="btn btn-primary" type="submit">Create Course</button>
+            <button class="btn btn-primary" type="submit" [disabled]="!courseForm.valid" [@buttonState]="courseForm.valid ? 'valid' : 'invalid'">Create Course</button>
             <button class="btn btn-danger" type="button" (click)="onCourseCancel()">Cancel</button>
         </div>
     </form>
