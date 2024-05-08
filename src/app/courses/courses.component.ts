@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { CoursesService } from './courses.service';
 import { Course } from './course.model';
 import { courseAddState, newCourseState, triggerState } from './animations';
 import { AnimationEvent } from '@angular/animations';
+import { routeAnimationState } from '../shared/route-animations';
 
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.css'],
-  animations: [triggerState, courseAddState, newCourseState]
+  animations: [triggerState, courseAddState, newCourseState, routeAnimationState]
 })
 export class CoursesComponent implements OnInit {
+
+  @HostBinding('@routeAnimationTrigger') routeAnimation = true;
 
   courses: Course[] = [];
   selectedCourseIndex!: number;
