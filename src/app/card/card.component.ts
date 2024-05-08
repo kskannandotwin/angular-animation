@@ -1,4 +1,4 @@
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, group, query, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,11 +8,32 @@ import { Component, OnInit } from '@angular/core';
   animations: [
     trigger('cardTrigger', [
       transition(':enter', [
-        style({
-          opacity: 0,
-          transform: 'translateX(100%)'
-        }),
-        animate(300)
+        group([
+          query('.card-header', [
+            style({
+              opacity: 0,
+            })
+          ]),
+          style({
+            opacity: 0,
+            transform: 'translateX(100%)'
+          }),
+          animate(3000),
+          query('.card-header', [
+            style({
+              opacity: 0,
+              transform: 'translateY(-100%)'
+            }),
+            animate(3000)
+          ]),
+          query('.card-footer', [
+            style({
+              opacity: 0,
+              transform: 'translateY(100%)'
+            }),
+            animate(3000)
+          ])
+        ]),
       ]),
       transition(':leave', [
         animate(300, style({
