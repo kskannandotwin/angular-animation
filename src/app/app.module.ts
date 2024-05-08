@@ -12,6 +12,7 @@ import { OpenCloseComponent } from './open-close/open-close.component';
 import { VoidAnimationComponent } from './void-animation/void-animation.component';
 import { NewCourseComponent } from './new-course/new-course.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CardComponent } from './card/card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AnimationComponent,
     OpenCloseComponent,
     VoidAnimationComponent,
-    NewCourseComponent
+    NewCourseComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
