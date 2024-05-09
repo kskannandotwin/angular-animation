@@ -9,7 +9,14 @@ import { routeAnimationState, routeSlideAnimationState } from '../shared/route-a
   selector: 'app-courses',
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.css'],
-  animations: [triggerState, courseAddState, newCourseState, routeAnimationState, routeSlideAnimationState, listStateTrigger]
+  animations: [
+    triggerState,
+    courseAddState,
+    newCourseState,
+    // routeAnimationState,
+    routeSlideAnimationState,
+    listStateTrigger
+  ]
 })
 export class CoursesComponent implements OnInit {
 
