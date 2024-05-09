@@ -18,20 +18,20 @@ import { Component, OnInit } from '@angular/core';
             opacity: 0,
             transform: 'translateX(100%)'
           }),
-          animate(3000),
+          animate(300),
           query('.card-header', [
             style({
               opacity: 0,
               transform: 'translateY(-100%)'
             }),
-            animate(3000)
+            animate(300)
           ]),
           query('.card-footer', [
             style({
               opacity: 0,
               transform: 'translateY(100%)'
             }),
-            animate(3000)
+            animate(300)
           ])
         ]),
       ]),
@@ -40,6 +40,17 @@ import { Component, OnInit } from '@angular/core';
           opacity: 0,
           transform: 'translateX(-100%)'
         }))
+      ]),
+      transition('* => *', [
+        query ('.card-body', [
+          style({
+            transform: 'scale(1)'
+          }),
+          animate(300, style({
+            transform: 'scale(1.1)'
+          })),
+          animate(300)
+        ], { optional: true })
       ])
     ])
   ]
@@ -47,6 +58,7 @@ import { Component, OnInit } from '@angular/core';
 export class CardComponent implements OnInit {
 
   showCard = true;
+  showParagraph = true;
 
   constructor() { }
 

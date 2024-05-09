@@ -3,7 +3,7 @@
         <div>
             <button class="btn btn-primary" (click)="showCard = !showCard">Show Card</button>
             <hr>
-            <div class="card" @cardTrigger *ngIf="showCard">
+            <div class="card" [@cardTrigger]="showParagraph ? 'open' : 'closed'" *ngIf="showCard">
                 <div class="card-header">
                     This is card header
                 </div>
@@ -11,6 +11,10 @@
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum, eaque a quaerat, excepturi
                     veritatis velit maiores dolores blanditiis obcaecati aspernatur ullam delectus id cum dignissimos
                     quas vel nihil voluptatum facere.
+                    <p *ngIf="showParagraph">This is the paragraph</p>
+                </div>
+                <div>
+                    <button class="btn btn-primary" (click)="showParagraph = !showParagraph">Toggle paragraph</button>
                 </div>
                 <div class="card-footer">
                     This is card footer
