@@ -1,7 +1,7 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { CoursesService } from './courses.service';
 import { Course } from './course.model';
-import { courseAddState, newCourseState, triggerState } from './animations';
+import { courseAddState, listStateTrigger, newCourseState, triggerState } from './animations';
 import { AnimationEvent } from '@angular/animations';
 import { routeAnimationState, routeSlideAnimationState } from '../shared/route-animations';
 
@@ -9,7 +9,7 @@ import { routeAnimationState, routeSlideAnimationState } from '../shared/route-a
   selector: 'app-courses',
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.css'],
-  animations: [triggerState, courseAddState, newCourseState, routeAnimationState, routeSlideAnimationState]
+  animations: [triggerState, courseAddState, newCourseState, routeAnimationState, routeSlideAnimationState, listStateTrigger]
 })
 export class CoursesComponent implements OnInit {
 
@@ -18,7 +18,6 @@ export class CoursesComponent implements OnInit {
   courses: Course[] = [];
   selectedCourseIndex!: number;
   coursesLoaded = false;
-  displayedCourses: Course[] = [];
   createNewCourse = false;
 
   constructor(private coursesService: CoursesService) { }
@@ -26,7 +25,6 @@ export class CoursesComponent implements OnInit {
   ngOnInit(): void {
     this.coursesService.getCourses().subscribe(courses => {
       this.courses = courses;
-      this.displayedCourses.push(this.courses[0]);
       this.coursesLoaded = true;
     });
   };
@@ -54,17 +52,5 @@ export class CoursesComponent implements OnInit {
 
   courseCancel() {
     this.createNewCourse = false;
-  }
-
-  onCourseAddDone(event: AnimationEvent, i: number) {
-    if (event.fromState !== 'void') {
-      return;
-    }
-
-    if (this.courses.length > i + 1) {
-      this.displayedCourses.push(this.courses[i + 1]);
-    } else {
-      this.displayedCourses = this.courses;
-    }
-  }
+  }  
 }
